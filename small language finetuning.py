@@ -11,7 +11,7 @@ from difflib import SequenceMatcher
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-file_path = r'/home/jayicebear/snap/Untitled Folder/중앙대학교 제공 데이터_v13.xlsx'
+file_path = r'/home/jayicebear/snap/Untitled Folder/'
 df_pred = pd.read_excel(file_path, sheet_name='인식문')
 df_true = pd.read_excel(file_path, sheet_name='정답문')
 
