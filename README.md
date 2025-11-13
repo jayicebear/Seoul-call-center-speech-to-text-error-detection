@@ -1,14 +1,17 @@
-# Training file for korean call center speech to text error detection & Correction.
+# 한국어 음성 인식 오류 수정 모델 (Korean ASR Error Correction)
 
-Token level detector Model:monologg/koelectra-base-v3-discriminator
-</br>
-Span level corrector (Encoder + Decoder) Model :'google/mt5-base','paust/pko-t5-base',hyunwoongko/kobart, Llama-3.1-8b-Instruct, Qwen-2.5-7b-Instruct, GPT4o
+## 프로젝트 개요
+이 프로젝트는 논문 *"Leveraging Fine-grained Error Correction in Korean Speech Recognition for Consultation Services"*에서 제안된 한국어 ASR(자동 음성 인식) 오류 검출 및 수정 프레임워크를 구현한 코드입니다.  
+서울 다산콜센터(120 Dasan Call Foundation)의 실제 통화 데이터를 기반으로 한 벤치마크 데이터셋을 활용하여:  
+- **오류 검출(Detector)**: 토큰 수준에서 오류를 식별하는 인코더 기반 모델.  
+- **오류 수정(Corrector)**: 스팬 수준에서 오류를 수정하는 seq2seq 모델.  
 
-We set monologg/koelectra-base-v3-discriminator as the backbone encoder for our detector, leveraging its strong performance on token classification tasks. For the utterance-level baseline detector, we use
-klue/roberta-base.
-For the correctors and seq2seq-based baseline detectors, we employ google/mt5-base,paust/pko-t5-base, and hyunwoongko/kobart as
-backbones. For the LLM-based baseline correctors, we fine-tune Llama-3.1-8b-Instruct and Qwen-2.5-7b-Instruct, while in-context learning relies on GPT-4o
-## Result 
+전체 파이프라인은 대화 → 발화 → 토큰/스팬 수준으로 세밀하게 세분화되어, 저자원 언어(한국어) 환경에서 SOTA 성능을 달성합니다.  
+데이터셋: 1,974개 대화(105k 발화), 오류율 9.83%.  
+목적: 콜센터 같은 실시간 환경에서 오디오 없이 텍스트만으로 ASR 오류를 수정.
 
-
-
+## 논문 요약
+- **주요 기여**:  
+  1. 한국어 ASR 오류 수정 파이프라인.  
+  2. 2단계 파이프라인: 토큰 수준 검출기 + 스팬 수준 수정기.  
+  3. 오류 유형 분석 (명사 56.3%, 자음 왜곡 84.5% 등) 및 실험 결과.  
