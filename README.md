@@ -1,7 +1,7 @@
 # 한국어 음성 인식 오류 수정 모델 (Korean ASR Error Correction)
 
 ## 프로젝트 개요
-이 프로젝트는 논문 *"Leveraging Fine-grained Error Correction in Korean Speech Recognition for Consultation Services"*에서 제안된 한국어 ASR(자동 음성 인식) 오류 검출 및 수정 프레임워크를 구현한 코드입니다.  
+이 프로젝트는 논문 *"(비공개)"*에서 제안된 한국어 ASR(자동 음성 인식) 오류 검출 및 수정 프레임워크를 구현한 코드입니다.  
 서울 다산콜센터(120 Dasan Call Foundation)의 실제 통화 데이터를 기반으로 한 벤치마크 데이터셋을 활용하여:  
 - **오류 검출(Detector)**: 토큰 수준에서 오류를 식별하는 인코더 기반 모델.  
 - **오류 수정(Corrector)**: 스팬 수준에서 오류를 수정하는 seq2seq 모델.  
